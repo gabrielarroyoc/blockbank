@@ -1,44 +1,22 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { Input } from "../components/Form/Input";
-import * as yup from "yup";
-import { useForm, SubmitHandler, FieldError } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, Flex, Image, Input, Text, VStack } from "@chakra-ui/react";
 
-type SignInFormData = {
-  email: string;
-  password: string;
-  error?: FieldError;
-};
-
-const SignInFormSchema = yup.object().shape({
-  email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-  password: yup.string().required("Senha obrigatório"),
-});
+import { FormEvent, useContext, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function SignIn() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(SignInFormSchema),
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn } = useContext(AuthContext);
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
-  };
-  function handlerSubmit<SignInFormData>(data: SignInFormData) {
-    console.log(data);
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    const data = {
+      email,
+      password,
+    };
+    await signIn(data);
   }
+
   return (
     <Flex bgColor="gray.900" w="100" h="100">
       <Flex
@@ -78,21 +56,19 @@ export default function SignIn() {
         <Text color="greenDefault.900" as="b" mt="20" fontSize="20">
           LOGIN
         </Text>
-        <Stack align="center" spacing={4}>
+        <form onSubmit={handleSubmit}>
           <Input
-            error={errors.email}
             type="email"
-            label="E-mail"
-            {...register("email")}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <Input
             type="password"
-            error={errors.password}
-            label="Senha"
-            {...register("password")}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-        </Stack>
+        </form>
         <Button type="submit" mt="6" bgColor="greenDefault.900">
           Entrar
         </Button>
