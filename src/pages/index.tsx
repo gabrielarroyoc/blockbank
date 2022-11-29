@@ -1,21 +1,22 @@
-import { Button, Flex, Image, Input, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text, VStack } from "@chakra-ui/react";
 
-import { FormEvent, useContext, useState } from "react";
+import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+
+import { ReactNode, useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { useRouter } from "next/router";
 
-export default function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { signIn } = useContext(AuthContext);
+interface FormProps {
+  children: ReactNode;
+}
 
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    const data = {
-      email,
-      password,
-    };
-    await signIn(data);
-  }
+const Home = () => {
+  const session = useSession();
+  const supabase = useSupabaseClient();
+
+  const router = useRouter();
+  const dashboard = router.query.id;
 
   return (
     <Flex bgColor="gray.900" w="100" h="100">
@@ -56,23 +57,19 @@ export default function SignIn() {
         <Text color="greenDefault.900" as="b" mt="20" fontSize="20">
           LOGIN
         </Text>
-        <form onSubmit={handleSubmit}>
-          <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </form>
-        <Button type="submit" mt="6" bgColor="greenDefault.900">
-          Entrar
-        </Button>
+        <>
+          {!session ? (
+            <Auth
+              supabaseClient={supabase}
+              appearance={{ theme: ThemeSupa }}
+              theme="dark"
+            />
+          ) : (
+            { dashboard }
+          )}
+        </>
       </VStack>
     </Flex>
   );
-}
+};
+export default Home;
