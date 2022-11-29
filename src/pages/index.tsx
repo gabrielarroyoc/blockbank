@@ -6,6 +6,7 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { ReactNode, useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface FormProps {
   children: ReactNode;
@@ -16,7 +17,7 @@ const Home = () => {
   const supabase = useSupabaseClient();
 
   const router = useRouter();
-  const dashboard = router.query.id;
+  const { dashboard } = router.query;
 
   return (
     <Flex bgColor="gray.900" w="100" h="100">
@@ -65,7 +66,13 @@ const Home = () => {
               theme="dark"
             />
           ) : (
-            { dashboard }
+            <Link
+              href={{
+                pathname: "/dashboard",
+              }}
+            >
+              <Button>Entrar</Button>
+            </Link>
           )}
         </>
       </VStack>
