@@ -26,7 +26,7 @@ export default function SignIn() {
         backgroundSize="1800px"
         filter="auto"
         brightness="85%"
-        bgImage="https://uploaddeimagens.com.br/images/004/175/338/original/low-angle-businessman.jpg?1669246989"
+        bgImage="https://i.imgur.com/3FLE98w.jpg"
         w="35%"
         h="100vh"
         borderTopRightRadius="28"
