@@ -8,11 +8,24 @@ import {
   Th,
   Thead,
   Tr,
+  useBreakpointValue,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { Header } from "../components/Header";
+import { Pagination } from "../components/Pagination";
+import { PaginationItem } from "../components/Pagination/PaginationItem";
 import { Sidebar } from "../components/Sidebar";
+import { useUsers } from "../services/hooks/useUsers";
 
 export default function Transactions() {
+  const [page, setPage] = useState(1);
+
+  const { data, isLoading, error, isFetching } = useUsers(page);
+
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   return (
     <Flex direction="column" h="100vh">
       <Header />
@@ -46,6 +59,11 @@ export default function Transactions() {
           </Tbody>
         </Table>
       </Flex>
+      <Pagination
+        totalCountOfRegisters={200}
+        currentPage={page}
+        onPageChange={setPage}
+      />
     </Flex>
   );
 }

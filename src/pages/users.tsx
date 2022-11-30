@@ -43,6 +43,7 @@ export default function Users() {
               placeholder="Number"
               _placeholder={{ color: "gray.400" }}
             />
+            
           </InputGroup>
         </VStack>
       </Flex>
