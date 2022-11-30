@@ -65,6 +65,7 @@ const options = {
       opacityTo: 0.3,
     },
   },
+  colors: ["#BBF737", "#a0ff9d"],
 };
 const series = [
   {
@@ -77,12 +78,12 @@ export default function Dashboard() {
   return (
     <Flex direction="column" h="100vh">
       <Header />
-      <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
+      <Flex pt="12" w="100%" maxW={1480} mx="auto" px="6">
         <Sidebar />
-        <HStack spacing={10}>
+        <HStack pb="40" spacing={10}>
           <Card backgroundColor="gray.800" w="300px">
             <CardBody>
-              <Stack align="left" mt="6" spacing="3">
+              <Stack align="left" mt="2" spacing="3">
                 <Heading size="md" color="gray.100">
                   Saldo
                 </Heading>
@@ -98,7 +99,7 @@ export default function Dashboard() {
           </Card>
           <Card backgroundColor="gray.800" w="300px">
             <CardBody>
-              <Stack align="left" mt="6" spacing="3">
+              <Stack align="left" mt="2" spacing="3">
                 <Heading size="md" color="gray.100">
                   Entradas
                 </Heading>
@@ -115,7 +116,7 @@ export default function Dashboard() {
           </Card>
           <Card backgroundColor="gray.800" w="300px">
             <CardBody>
-              <Stack align="left" mt="6" spacing="3">
+              <Stack align="left" mt="2" spacing="3">
                 <Heading size="md" color="gray.100">
                   Retiradas
                 </Heading>
@@ -133,7 +134,7 @@ export default function Dashboard() {
         </HStack>
       </Flex>
       <VStack>
-        <HStack ml="120" spacing={4} mt="20" maxW={1480}>
+        <HStack ml="120" spacing={4} maxW={1480}>
           <Card backgroundColor="gray.800" h="250px" w="480px">
             <Heading p="4" color="gray.100" size="md">
               Balanço

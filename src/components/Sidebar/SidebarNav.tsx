@@ -1,12 +1,9 @@
 import { Stack } from "@chakra-ui/react";
 import { SiSimpleanalytics } from "react-icons/Si";
 import { BiWalletAlt } from "react-icons/bi";
-import {
-  RiContactsLine,
-  RiDashboardLine,
-  RiGitMergeLine,
-  RiInputMethodLine,
-} from "react-icons/ri";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import { IoSettingsOutline } from "react-icons/io5";
+import { RiContactsLine, RiDashboardLine } from "react-icons/ri";
 import { NavLink } from "./NavLink";
 import { NavSection } from "./NavSection";
 
@@ -22,11 +19,19 @@ export function SidebarNav() {
         </NavLink>
       </NavSection>
       <NavSection title="RELATÓRIOS">
-        <NavLink icon={SiSimpleanalytics} href="/analytics">
-          Gráficos
+        <NavLink icon={SiSimpleanalytics} href="/transactions">
+          Transações
         </NavLink>
         <NavLink icon={BiWalletAlt} href="/wallet">
           Carteira
+        </NavLink>
+      </NavSection>
+      <NavSection title="GERENCIAMENTO">
+        <NavLink icon={IoSettingsOutline} href="/config">
+          Configurações
+        </NavLink>
+        <NavLink icon={RiLogoutBoxRLine} href="/logout">
+          Logout
         </NavLink>
       </NavSection>
     </Stack>

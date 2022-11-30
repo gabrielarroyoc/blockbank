@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
-export default function Wallet() {
+export default function Transactions() {
   return (
     <Flex direction="column" h="100vh">
       <Header />
