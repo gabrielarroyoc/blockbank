@@ -1,10 +1,12 @@
 import dynamic from "next/dynamic";
 import {
+  Button,
   Card,
   CardBody,
   Flex,
   Heading,
   HStack,
+  Icon,
   Stack,
   Stat,
   StatArrow,
@@ -14,6 +16,7 @@ import {
   theme,
   VStack,
 } from "@chakra-ui/react";
+import { BsPlusLg } from "react-icons/bs";
 import ApexCharts from "apexcharts";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
@@ -67,10 +70,11 @@ const options = {
   },
   colors: ["#BBF737", "#a0ff9d"],
 };
+
 const series = [
   {
     name: "series1",
-    data: [31, 120, 10, 28, 51, 18, 109],
+    data: [0, 0, 0, 0, 0, 0, 0],
   },
 ];
 
@@ -78,60 +82,78 @@ export default function Dashboard() {
   return (
     <Flex direction="column" h="100vh">
       <Header />
+
       <Flex pt="12" w="100%" maxW={1480} mx="auto" px="6">
         <Sidebar />
-        <HStack pb="40" spacing={10}>
-          <Card backgroundColor="gray.800" w="300px">
-            <CardBody>
-              <Stack align="left" mt="2" spacing="3">
-                <Heading size="md" color="gray.100">
-                  Saldo
-                </Heading>
-                <Stat>
-                  <StatNumber color="gray.100">R$0.00</StatNumber>
-                  <StatHelpText>
-                    <StatArrow type="increase" />
-                    <Text color="gray.100"> 0.00%</Text>
-                  </StatHelpText>
-                </Stat>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card backgroundColor="gray.800" w="300px">
-            <CardBody>
-              <Stack align="left" mt="2" spacing="3">
-                <Heading size="md" color="gray.100">
-                  Entradas
-                </Heading>
 
-                <Stat>
-                  <StatNumber color="gray.100">R$0.00</StatNumber>
-                  <StatHelpText>
-                    <StatArrow type="increase" />
-                    <Text color="gray.100"> 0.00%</Text>
-                  </StatHelpText>
-                </Stat>
-              </Stack>
-            </CardBody>
-          </Card>
-          <Card backgroundColor="gray.800" w="300px">
-            <CardBody>
-              <Stack align="left" mt="2" spacing="3">
-                <Heading size="md" color="gray.100">
-                  Retiradas
-                </Heading>
+        <VStack align="left" spacing={10}>
+          <Flex pb="12" align="left" justify="left">
+            <Heading size="lg">
+              Olá Gabriel,
+              <br /> seja bem-vindo de volta!
+              <Button
+                _hover={{ bgColor: "gray.700" }}
+                bgColor="gray.800"
+                ml="400"
+              >
+                <Icon m="2" as={BsPlusLg} />
+                Nova Transação
+              </Button>
+            </Heading>
+          </Flex>
+          <HStack spacing={10}>
+            <Card backgroundColor="gray.800" w="300px">
+              <CardBody>
+                <Stack align="left" mt="2" spacing="3">
+                  <Heading size="md" color="gray.100">
+                    Saldo
+                  </Heading>
+                  <Stat>
+                    <StatNumber color="gray.100">R$0.00</StatNumber>
+                    <StatHelpText>
+                      <StatArrow color="greenDefault.900" type="increase" />
+                      <Text color="gray.100"> 0.00%</Text>
+                    </StatHelpText>
+                  </Stat>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card backgroundColor="gray.800" w="300px">
+              <CardBody>
+                <Stack align="left" mt="2" spacing="3">
+                  <Heading size="md" color="gray.100">
+                    Entradas
+                  </Heading>
 
-                <Stat>
-                  <StatNumber color="gray.100">R$0.00</StatNumber>
-                  <StatHelpText>
-                    <StatArrow type="decrease" />
-                    <Text color="gray.100"> 0.00%</Text>
-                  </StatHelpText>
-                </Stat>
-              </Stack>
-            </CardBody>
-          </Card>
-        </HStack>
+                  <Stat>
+                    <StatNumber color="gray.100">R$0.00</StatNumber>
+                    <StatHelpText>
+                      <StatArrow color="greenDefault.900" type="increase" />
+                      <Text color="gray.100"> 0.00%</Text>
+                    </StatHelpText>
+                  </Stat>
+                </Stack>
+              </CardBody>
+            </Card>
+            <Card backgroundColor="gray.800" w="300px">
+              <CardBody>
+                <Stack align="left" mt="2" spacing="3">
+                  <Heading size="md" color="gray.100">
+                    Retiradas
+                  </Heading>
+
+                  <Stat>
+                    <StatNumber color="gray.100">R$0.00</StatNumber>
+                    <StatHelpText>
+                      <StatArrow type="decrease" />
+                      <Text color="gray.100"> 0.00%</Text>
+                    </StatHelpText>
+                  </Stat>
+                </Stack>
+              </CardBody>
+            </Card>
+          </HStack>
+        </VStack>
       </Flex>
       <VStack>
         <HStack ml="120" spacing={4} maxW={1480}>

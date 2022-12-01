@@ -14,21 +14,18 @@ export function SidebarNav() {
         <NavLink icon={RiDashboardLine} href="/dashboard">
           Dashboard
         </NavLink>
-        <NavLink icon={RiContactsLine} href="/users">
-          Perfil
-        </NavLink>
       </NavSection>
       <NavSection title="RELATÓRIOS">
-        <NavLink icon={AiOutlineTransaction} href="/transactions">
-          Transações
+        <NavLink icon={AiOutlineTransaction} href="/crypto">
+          Crypto
         </NavLink>
         <NavLink icon={BiWalletAlt} href="/wallet">
-          Carteira
+          Transações
         </NavLink>
       </NavSection>
-      <NavSection title="GERENCIAMENTO">
-        <NavLink icon={IoSettingsOutline} href="/config">
-          Configurações
+      <NavSection title="Conta">
+        <NavLink icon={RiContactsLine} href="/users">
+          Perfil
         </NavLink>
         <NavLink icon={RiLogoutBoxRLine} href="/logout">
           Logout

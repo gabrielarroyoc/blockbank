@@ -12,7 +12,7 @@ interface FormProps {
   children: ReactNode;
 }
 
-const Home = () => {
+const SignIn = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
 
@@ -79,4 +79,4 @@ const Home = () => {
     </Flex>
   );
 };
-export default Home;
+export default SignIn;
