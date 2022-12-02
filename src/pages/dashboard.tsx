@@ -25,6 +25,27 @@ const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
+const pieChart = {
+  options: {
+    chart: {
+      type: "donut",
+    },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    ],
+  },
+};
+
 const options = {
   chart: {
     toolbar: {
@@ -68,13 +89,17 @@ const options = {
       opacityTo: 0.3,
     },
   },
-  colors: ["#BBF737", "#a0ff9d"],
+  colors: ["#BBF737", "#e80800"],
 };
 
 const series = [
   {
     name: "series1",
-    data: [0, 0, 0, 0, 0, 0, 0],
+    data: [1, 0, 3, 0, 4, 0, 0],
+  },
+  {
+    name: "series2",
+    data: [2, 0, 5, 0, 6, 0, 0],
   },
 ];
 
@@ -159,18 +184,13 @@ export default function Dashboard() {
         <HStack ml="120" spacing={4} maxW={1480}>
           <Card backgroundColor="gray.800" h="250px" w="480px">
             <Heading p="4" color="gray.100" size="md">
-              Balanço
+              Balanço (gráfico de pizza)
             </Heading>
-            <Chart
-              options={options}
-              series={series}
-              type="area"
-              height={170}
-            ></Chart>
+            <Chart options={options} series={series} type="donut"></Chart>
           </Card>
           <Card backgroundColor="gray.800" h="250px" w="480px">
             <Heading p="4" color="gray.100" size="md">
-              Balanço
+              Entradas e Saídas
             </Heading>
             <Chart
               options={options}
