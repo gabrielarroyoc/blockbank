@@ -1,13 +1,16 @@
-import { Stack } from "@chakra-ui/react";
-import { AiOutlineTransaction } from "react-icons/ai";
+import { Button, Stack } from "@chakra-ui/react";
 import { BiWalletAlt } from "react-icons/bi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
 import { RiContactsLine, RiDashboardLine } from "react-icons/ri";
 import { NavLink } from "./NavLink";
 import { NavSection } from "./NavSection";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { useState } from "react";
 
-export function SidebarNav() {
+export const SidebarNav = () => {
+  const supabaseClient = useSupabaseClient();
+  const user = useUser();
+  const [data, setData] = useState();
   return (
     <Stack spacing="12" align="flex-start">
       <NavSection title="GERAL">
@@ -16,9 +19,6 @@ export function SidebarNav() {
         </NavLink>
       </NavSection>
       <NavSection title="RELATÓRIOS">
-        <NavLink icon={AiOutlineTransaction} href="/crypto">
-          Crypto
-        </NavLink>
         <NavLink icon={BiWalletAlt} href="/wallet">
           Transações
         </NavLink>
@@ -27,10 +27,15 @@ export function SidebarNav() {
         <NavLink icon={RiContactsLine} href="/users">
           Perfil
         </NavLink>
-        <NavLink icon={RiLogoutBoxRLine} href="/logout">
+
+        <NavLink
+          onClick={() => supabaseClient.auth.signOut()}
+          icon={RiLogoutBoxRLine}
+          href="/logout"
+        >
           Logout
         </NavLink>
       </NavSection>
     </Stack>
   );
-}
+};
