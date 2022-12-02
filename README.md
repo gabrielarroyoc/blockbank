@@ -1,11 +1,11 @@
 ### Todo List
 ### All pages
-| Name | Description | Status |
-| ---- | ----------- | ------ |
-| Login | - |  ⚠  |
-| Dashboard | - | ⚠ |
-| Transactions | - | ⚠ |
-| Transactions List| - | ⚠ |
+| Name | Description | Status | Link |
+| ---- | ----------- | ------ | ---- | 
+| Login | - |  💭  | https://github.com/gabrielarroyoc/blockbank/pull/1|
+| Dashboard | - | ⚠ |           
+| Transactions | - | ⚠ |        
+| Transactions List| - | ⚠ |       
 
 ### LOGIN 
 | Name | Description | Status |
