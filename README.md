@@ -2,7 +2,7 @@
 ### All pages
 | Name | Description | Status | Link |
 | ---- | ----------- | ------ | ---- | 
-| Login | - |  💭  | (https://github.com/gabrielarroyoc/blockbank/pull/1)[] |
+| Login | - |  💭  | [Login Page 1#PR](https://github.com/gabrielarroyoc/blockbank/pull/1) |
 | Dashboard | - | ⚠ |           
 | Transactions | - | ⚠ |        
 | Transactions List| - | ⚠ |       
